@@ -33,7 +33,7 @@ resource "aws_security_group" "Devsecgrp-sonar" {
 	}
 }
 
-resourcce "aws_instance" "sonar_instance" {
+resource "aws_instance" "sonar_instance" {
 	ami= var.ami_id
 	key_name = var.key_name
 	instance_type = var.instance_type
