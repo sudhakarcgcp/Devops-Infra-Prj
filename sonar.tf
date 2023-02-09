@@ -10,8 +10,7 @@ resource "aws_vpc" "sonar" {
   }
 }
 
-resource "aws_security_group" "Devsecgrp-sonar"
-{
+resource "aws_security_group" "Devsecgrp-sonar" {
  Name = "Devsecgrp-sonar"
  description = "Security group for sonarqube server"
  ingress {
