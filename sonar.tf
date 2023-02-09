@@ -1,3 +1,7 @@
+provider "aws" {
+  region = var.aws_region
+}
+
 resource "aws_vpc" "sonar"
 {
  cidr_block = "172.31.0.0/16"
