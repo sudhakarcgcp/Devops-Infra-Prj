@@ -31,6 +31,7 @@ resource "aws_security_group" "Devsecgrp-sonar" {
  tags = {
 	Name = "SonarSG"
 	}
+}
 
 resourcce "aws_instance" "sonar_instance" {
 	ami= var.ami_id
