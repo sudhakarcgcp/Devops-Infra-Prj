@@ -1,3 +1,7 @@
+provider "aws" {
+  region = var.aws_region
+}
+
 resource "aws_vpc" "sonar" {
  cidr_block = "172.31.0.0/16"
  instance_tenancy = "default"
@@ -6,7 +10,8 @@ resource "aws_vpc" "sonar" {
   }
 }
 
-resource "aws_security_group" "Devsecgrp-sonar" {
+resource "aws_security_group" "Devsecgrp-sonar"
+{
  Name = "Devsecgrp-sonar"
  description = "Security group for sonarqube server"
  ingress {
@@ -32,12 +37,11 @@ resource "aws_security_group" "Devsecgrp-sonar" {
 	Name = "SonarSG"
 	}
 }
-
 resource "aws_instance" "sonar_instance" {
 	ami= var.ami_id
 	key_name = var.key_name
 	instance_type = var.instance_type
-	vpc_security_group_ids = [aws_security_group.SonarSG.id]
+	vpc_security_group_ids = [aws_security_group.Devsecgrp-sonar.id]
 	tags= {
 	Name = var.tag_name
 	}
