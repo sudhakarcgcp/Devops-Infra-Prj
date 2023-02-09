@@ -6,8 +6,7 @@ resource "aws_vpc" "sonar" {
   }
 }
 
-resource "aws_security_group" "Devsecgrp-sonar"
-{
+resource "aws_security_group" "Devsecgrp-sonar" {
  Name = "Devsecgrp-sonar"
  description = "Security group for sonarqube server"
  ingress
@@ -37,8 +36,7 @@ resource "aws_security_group" "Devsecgrp-sonar"
 	Name = "SonarSG"
 	}
 
-resourcce "aws_instance" "sonar_instance"
-	{
+resourcce "aws_instance" "sonar_instance" 	{
 	ami= var.ami_id
 	key_name = var.key_name
 	instance_type = var.instance_type
