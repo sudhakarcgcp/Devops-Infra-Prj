@@ -9,34 +9,30 @@ resource "aws_vpc" "sonar" {
 resource "aws_security_group" "Devsecgrp-sonar" {
  Name = "Devsecgrp-sonar"
  description = "Security group for sonarqube server"
- ingress
-	{
+ ingress {
 	from_port = 9000
 	to_port   = 9000
 	protocol  = "tcp"
 	cidr_blocks = ["0.0.0.0/0"]
 	}
- ingress
-	{
+ ingress {
 	from_port = 22
 	to_port   = 22
 	protocol  = "tcp"
 	cidr_blocks = ["0.0.0.0/0"]
 	}
- egress
-	{
+ egress {
 	from_port = 0
 	to_port   = 65535
 	protocol  = "tcp"
 	cidr_blocks = ["0.0.0.0/0"]
 	}
 	
- tags =
-	{
+ tags = {
 	Name = "SonarSG"
 	}
 
-resourcce "aws_instance" "sonar_instance" 	{
+resourcce "aws_instance" "sonar_instance" {
 	ami= var.ami_id
 	key_name = var.key_name
 	instance_type = var.instance_type
