@@ -38,7 +38,7 @@ resource "aws_instance" "sonar_instance" {
 	instance_type = var.instance_type
 	vpc_security_group_ids = [aws_security_group.Devsecgrp-sonar.id]
 	tags= {
-	Name = var.tag_name
+	Name = aws_instance.tag_name
 	}
 }
 
