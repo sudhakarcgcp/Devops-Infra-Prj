@@ -1,8 +1,7 @@
-resource "aws_vpc" "sonar" {
- cidr_block = "172.31.0.0/16"
- instance_tenancy = "default"
- tags = {
-   Name = "Devops-Prj"
+data "aws_vpc" "existing_vpc" {
+  filter {
+   name = "tag:Name"
+   values = ["Default-Devops-vpc"]
   }
 }
 
@@ -38,7 +37,7 @@ resource "aws_instance" "sonar_instance" {
 	instance_type = var.instance_type
 	vpc_security_group_ids = [aws_security_group.Devsecgrp-sonar.id]
 	tags= {
-	Name = aws_instance.tag_name
+	Name = var.tag_name
 	}
 }
 

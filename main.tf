@@ -2,14 +2,12 @@ provider "aws" {
   region = var.aws_region
 }
 
-resource "aws_vpc" "main" {
-  cidr_block = "172.31.0.0/16"
-  instance_tenancy = "default"
-  tags = {
-    Name = "main"
+data "aws_vpc" "existing_vpc" {
+  filter {
+    name = "tag:Name"
+    values = ["Default-Devops-vpc"]	
   }
 }
-
 
 #Create security group with firewall rules
 resource "aws_security_group" "DevopsSG-terraform" {
