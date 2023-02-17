@@ -3,9 +3,9 @@ terraform {
     #Replace this with your bucket name!
     bucket         = "infraprj-tfstate-bucket"
     key            = "dc/s3/terraform.tfstate"
-    region         = "us-east-2"
+    region         = "eu-west-2"
     #Replace this with your DynamoDB table name!
-    dynamodb_table = "tf-up-and-run-locks"
+    dynamodb_table = "infraprj-tfstatelock-table"
     encrypt        = true
     }
 }
