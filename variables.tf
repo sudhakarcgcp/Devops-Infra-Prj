@@ -15,7 +15,7 @@ variable "instance_type" {
 
 variable "security_group" { 
     description = "Name of security group" 
-    default     = "DevopsSG-test" 
+    default     = "DevopsSG-Test" 
 }
 
 variable "tag_name" { 
