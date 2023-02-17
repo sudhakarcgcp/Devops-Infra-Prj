@@ -2,18 +2,23 @@ provider "aws" {
   region = var.aws_region
 }
 
-data "aws_vpc" "existing_vpc" {
-  filter {
-    name = "tag:Name"
-    values = ["Default-Devops-vpc"]	
+resource "aws_vpc" "main" {
+  cidr_block = "172.16.0.0/16"
+  instance_tenancy = "default"
+  tags = {
+    Name = "main"
   }
 }
 
+
 #Create security group with firewall rules
-resource "aws_security_group" "DevopsSG-terraform" {
+resource "aws_security_group" "DevopsSG-Test" {
   name        = var.security_group
   description = "security group for jenkins"
 
+                                    
+
+                                  
   ingress {
     from_port   = 8080
     to_port     = 8080
@@ -45,7 +50,7 @@ resource "aws_instance" "myFirstInstance" {
   ami           = var.ami_id
   key_name = var.key_name
   instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.DevopsSG-terraform.id]
+  vpc_security_group_ids = [aws_security_group.DevopsSG-test.id]
   tags= {
     Name = var.tag_name
   }

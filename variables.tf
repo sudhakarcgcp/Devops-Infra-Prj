@@ -15,12 +15,12 @@ variable "instance_type" {
 
 variable "security_group" { 
     description = "Name of security group" 
-    default     = "DevopsSG-terraform" 
+    default     = "DevopsSG-test" 
 }
 
 variable "tag_name" { 
     description = "Tag Name of for Ec2 instance" 
-    default     = "my-test-ec2-instance" 
+    default     = "my-ec2-instance" 
 } 
 variable "ami_id" { 
     description = "AMI for Ubuntu Ec2 instance" 
